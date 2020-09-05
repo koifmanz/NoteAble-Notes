@@ -2,7 +2,7 @@
 tags: [Notebooks/AirFlow]
 title: Terminology
 created: '2020-09-03T08:38:17.976Z'
-modified: '2020-09-03T14:35:28.408Z'
+modified: '2020-09-05T04:50:32.549Z'
 ---
 
 # Terminology
@@ -62,5 +62,12 @@ An open source tool which structures data pipelines as DAGs. WorkFlow based on 5
 6. Once all tasks have been completed, the DAG is complete.
 
 
+### AirFlow component summary
+
+
+* DAG - A collection of nodes and edges that describe the order of operations for a data pipeline
+* Task - An instantiated step in a pipeline fully parameterized for execution
+* Hook - A reusable connection to an external database or system
+* Operator - An abstract building block that can be configured to perform some work
 
 

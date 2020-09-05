@@ -2,7 +2,7 @@
 tags: [Notebooks/AirFlow]
 title: Getting Started
 created: '2020-09-03T14:06:31.367Z'
-modified: '2020-09-04T06:54:58.920Z'
+modified: '2020-09-05T04:42:03.915Z'
 ---
 
 # Getting Started
@@ -135,5 +135,32 @@ hello_world_task >> working_dir_task
 current_time_task >> complete_task
 working_dir_task >> complete_task
 ```
+
+### Templating with Context variables
+
+AirFlow levrages templating to allow users to "fill in the blank" with important runtime variables tasks.
+
+Example:
+
+```python
+from airflow import DAG
+from airflow.operators.python_operator import PythonOperator
+
+def hello_date(*args, **kwargs):
+  print(f"Hello {kwargs['execution_date']}")
+
+divvy_dag = DAG(...)
+
+task = PythonOperator(
+  task_id='hello_world'
+  python_callable=hello_date,
+  provide_context=True,
+  dag=divvy_dag
+)
+```
+
+In the code above *kwargs[execution_date]* come from *provide_context=True*, which come from AirFlow itself. 
+
+*Read More: [godatadriven.com](https://godatadriven.com/blog/the-zen-of-python-and-apache-airflow/)*
 
 
