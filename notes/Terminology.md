@@ -2,7 +2,7 @@
 tags: [Notebooks/AirFlow]
 title: Terminology
 created: '2020-09-03T08:38:17.976Z'
-modified: '2020-09-05T04:50:32.549Z'
+modified: '2020-09-06T11:21:25.107Z'
 ---
 
 # Terminology
@@ -62,8 +62,19 @@ An open source tool which structures data pipelines as DAGs. WorkFlow based on 5
 6. Once all tasks have been completed, the DAG is complete.
 
 
-### AirFlow component summary
+### Schedules
 
+AirFlow determine the schedule based on the star date, end date and the interval (monthly, hourly, etc.). Whilte start date is a must, end date and the interval are not (it will run once a day as default). 
+
+##### Start Date
+
+Airflow will begin running pipelines on the start date selected. Whenever the start date of a DAG is in the past, and the time difference between the start date and now includes more than one schedule intervals, Airflow will automatically schedule and execute a DAG run to satisfy each one of those intervals. This feature is useful in almost all enterprise settings, where companies have established years of data that may need to be retroactively analyzed.
+
+##### End Date
+
+Airflow pipelines can also have end dates. You can use an end_date with your pipeline to let Airflow know when to stop running the pipeline. End_dates can also be useful when you want to perform an overhaul or redesign of an existing pipeline. Update the old pipeline with an end_date and then have the new pipeline start on the end date of the old pipeline.
+
+### AirFlow component summary
 
 * DAG - A collection of nodes and edges that describe the order of operations for a data pipeline
 * Task - An instantiated step in a pipeline fully parameterized for execution

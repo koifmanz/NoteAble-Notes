@@ -2,7 +2,7 @@
 tags: [Notebooks/AirFlow]
 title: Getting Started
 created: '2020-09-03T14:06:31.367Z'
-modified: '2020-09-05T04:42:03.915Z'
+modified: '2020-09-06T11:32:43.886Z'
 ---
 
 # Getting Started
@@ -36,8 +36,10 @@ In the follwing case AirFlow will show us the ETL already run one month ago.
 ```python
 dag = DAG(
   'lesson2.demo2',
-  start_date = datetime.datetime.now() - datetime.timedelta(days=30), 
-  schedule_interval='@monthly'
+  start_date = datetime.datetime.now() - datetime.timedelta(days=30),
+  end_date = datetime.datetime(2022, 12, 1, 0, 0, 0, 0),  
+  schedule_interval = '@monthly',
+  max_active_runs = 1 # how much DAGs run at once, or each month will run alone
 )
 ```
 
