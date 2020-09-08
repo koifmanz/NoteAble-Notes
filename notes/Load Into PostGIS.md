@@ -2,7 +2,7 @@
 tags: [Notebooks/Postgres and postgis]
 title: Load Into PostGIS
 created: '2019-12-08T10:30:04.089Z'
-modified: '2019-12-08T12:47:20.460Z'
+modified: '2020-09-07T16:35:41.895Z'
 ---
 
 # Load Into PostGIS
@@ -48,9 +48,21 @@ ogr2ogr -f "PostgreSQL" PG:"host=servername port=5432 user='username' password='
 ### Insert Data using SQL
 
 ```SQL
-Insert data to spatial table
 INSERT INTO <table> (field 1…, field n, <geom field>) 
 VALUES (value 1… value n, ST_SetSRID(ST_MakePoint(X , Y), SRID));
 ```
 
 [stackexchange](https://gis.stackexchange.com/questions/104607/problem-with-geometry-srid-in-postgis)
+
+### Insert Data using shp2pgsql
+
+```python
+import os
+import subprocess
+
+cmd = 'shp2pgsql -s 4326 ../data/shp/statistical_neighborhoods.shp temp_table | psql -h hostname -d databasename -U username --quiet'
+
+subprocess.call(cmd, shell=True)
+```
+
+[stackexchange](https://gis.stackexchange.com/questions/251386/how-to-run-shp2pgsql-in-python-without-reporting-every-row-loaded)
