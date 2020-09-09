@@ -2,7 +2,7 @@
 tags: [Notebooks/AirFlow]
 title: Getting Started
 created: '2020-09-03T14:06:31.367Z'
-modified: '2020-09-06T11:32:43.886Z'
+modified: '2020-09-08T07:20:21.639Z'
 ---
 
 # Getting Started

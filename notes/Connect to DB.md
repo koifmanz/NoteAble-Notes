@@ -2,7 +2,7 @@
 tags: [Notebooks/Postgres and postgis]
 title: Connect to DB
 created: '2020-09-07T16:00:14.860Z'
-modified: '2020-09-07T16:09:35.190Z'
+modified: '2020-09-09T11:21:26.395Z'
 ---
 
 # Connect to DB
@@ -19,10 +19,21 @@ docker run --name postgis -d -e POSTGRES_USER=ziv -e POSTGRES_PASS=password -e P
 
 ##### Create pg_data
 
-
-
 ```bash
 docker volume create pg_data
+```
+
+##### Connect using jupyter notebook
+
+req:
+1. sqlalchemy
+2. ipython-sql
+
+Then run the following code:
+
+```python
+%load_ext sql
+%sql postgresql://user:password@localhost:port/db
 ```
 
 ### Connect to Qgis or Dbeaver (local)
