@@ -2,7 +2,7 @@
 tags: [Notebooks/Postgres and postgis]
 title: Load Into PostGIS
 created: '2019-12-08T10:30:04.089Z'
-modified: '2020-09-07T16:35:41.895Z'
+modified: '2020-09-10T12:53:19.265Z'
 ---
 
 # Load Into PostGIS
@@ -56,6 +56,9 @@ VALUES (value 1… value n, ST_SetSRID(ST_MakePoint(X , Y), SRID));
 
 ### Insert Data using shp2pgsql
 
+1. enter in the bash PGPASSWORD=password  or as os.env, but it better to use pgpass file
+2. use the following code  
+
 ```python
 import os
 import subprocess
@@ -64,5 +67,7 @@ cmd = 'shp2pgsql -s 4326 ../data/shp/statistical_neighborhoods.shp temp_table | 
 
 subprocess.call(cmd, shell=True)
 ```
+[Tips for GIS](https://tipsforgis.wordpress.com/2018/10/05/add-multiple-shapefiles-to-postgresql-with-a-python-script/)
 
-[stackexchange](https://gis.stackexchange.com/questions/251386/how-to-run-shp2pgsql-in-python-without-reporting-every-row-loaded)
+[stackexchange - How to specify a password with shp2pgsql using CentOS?](https://gis.stackexchange.com/questions/258052/how-to-specify-a-password-with-shp2pgsql)
+[stackexchange - how-to-run-shp2pgsql-in-python](https://gis.stackexchange.com/questions/251386/how-to-run-shp2pgsql-in-python-without-reporting-every-row-loaded)
